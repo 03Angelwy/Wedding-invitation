@@ -123,3 +123,10 @@
       padding: 2rem;
       text-align: center;
     }
+    .contador {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #b8860b; /* dorado */
+      margin-top: 20px;
+      text-align: center;
+    }
