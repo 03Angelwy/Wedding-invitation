@@ -1,214 +1,144 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invitación de Boda</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
-  <style>
-    :root {
-      --verde-oliva: #556B2F;
-      --arena: #E5D3B3;
-      --blanco: #FFFFFF;
-      --oro: #C9A13C;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
-      font-family: 'Lato', sans-serif; 
-      background-color: var(--blanco); 
-      color: var(--verde-oliva);
-      scroll-behavior: smooth;
-    }
-
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--oro);
-    }
-
-    section {
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-
-    /* Portada */
-    header {
-      height: 100vh;
-      background: url("https://images.unsplash.com/photo-1529634806980-3a8b1c4ef91b") no-repeat center/cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: var(--blanco);
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      color: var(--blanco);
-    }
-    header h1 span { color: var(--oro); }
-    header p { margin-top: 1rem; font-size: 1.2rem; }
-
-    /* Invitados */
-    .invitacion {
-      background: rgba(229, 211, 179, 0.3);
-      padding: 2rem;
-      border-radius: 15px;
-      max-width: 400px;
-      margin: auto;
-    }
-    .invitacion h3 { font-size: 1.5rem; color: var(--verde-oliva); }
-    .invitacion img { margin-top: 1rem; width: 150px; }
-
-    /* Itinerario */
-    .timeline {
-      list-style: none;
-      padding: 0;
-    }
-    .timeline li {
-      margin: 1rem 0;
-      font-size: 1.1rem;
-    }
-
-    /* Ubicaciones */
-    .ubicaciones a {
-      display: block;
-      margin: 0.5rem 0;
-      color: var(--verde-oliva);
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* Hospedaje */
-    .hospedaje div {
-      margin: 1rem 0;
-    }
-
-    /* Vestimenta */
-    .dresscode {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: var(--oro);
-    }
-
-    /* Mesa de regalos */
-    .regalos a {
-      display: inline-block;
-      margin: 1rem;
-      padding: 1rem 2rem;
-      border: 2px solid var(--oro);
-      border-radius: 10px;
-      color: var(--oro);
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .regalos a:hover {
-      background: var(--oro);
-      color: var(--blanco);
-    }
-
-    /* Fotos */
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-    .galeria img {
-      width: 100%;
-      border-radius: 10px;
-      transition: transform 0.3s;
-    }
-    .galeria img:hover {
-      transform: scale(1.05);
-    }
-
-    footer {
-      background: var(--verde-oliva);
-      color: var(--blanco);
-      padding: 2rem;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Invitación de Boda
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&amp;family=Lato&amp;display=swap" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  </link>
+  <link href="style.css" rel="stylesheet"/>
+ </head>
+ <body>
   <!-- Portada -->
   <header>
-    <h1 data-aos="fade-down">Ángel <span>&</span> [Nombre]</h1>
-    <p data-aos="fade-up">¡Nos casamos! <br> 15 de Noviembre 2025</p>
+   <h1 data-aos="fade-down">
+    Ángel
+    <span>
+     &amp;
+    </span>
+    [Nombre]
+   </h1>
+   <p data-aos="fade-up">
+    ¡Nos casamos!
+    <br/>
+    15 de Noviembre 2025
+   </p>
   </header>
-
   <!-- Invitados -->
   <section data-aos="fade-up">
-    <h2>Tu Invitación</h2>
-    <div class="invitacion">
-      <h3>Querida Marianita</h3>
-      <p>¡Te esperamos con mucho cariño!</p>
-      <p><b>Pases:</b> 1</p>
-      <p>No niños</p>
-      <!-- QR de ejemplo -->
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Invitación+Marianita" alt="QR Invitación">
-    </div>
+   <h2>
+    Tu Invitación
+   </h2>
+   <div class="invitacion">
+    <h3>
+     Querida Marianita
+    </h3>
+    <p>
+     ¡Te esperamos con mucho cariño!
+    </p>
+    <p>
+     <b>
+      Pases:
+     </b>
+     1
+    </p>
+    <p>
+     No niños
+    </p>
+    <!-- QR de ejemplo -->
+    <img alt="QR Invitación" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=Invitación+Marianita"/>
+   </div>
   </section>
-
   <!-- Itinerario -->
   <section data-aos="fade-up">
-    <h2>Itinerario</h2>
-    <ul class="timeline">
-      <li>⛪ Ceremonia: 4:00 PM – Parroquia [Nombre]</li>
-      <li>🍽️ Recepción: 6:00 PM – Salón [Nombre]</li>
-      <li>🎉 Fiesta: 8:00 PM – Música y baile</li>
-    </ul>
+   <h2>
+    Itinerario
+   </h2>
+   <ul class="timeline">
+    <li>
+     ⛪ Ceremonia: 4:00 PM – Parroquia [Nombre]
+    </li>
+    <li>
+     🍽️ Recepción: 6:00 PM – Salón [Nombre]
+    </li>
+    <li>
+     🎉 Fiesta: 8:00 PM – Música y baile
+    </li>
+   </ul>
   </section>
-
   <!-- Ubicaciones -->
   <section class="ubicaciones" data-aos="fade-up">
-    <h2>Ubicaciones</h2>
-    <a href="https://maps.google.com" target="_blank">📍 Parroquia [Nombre]</a>
-    <a href="https://maps.google.com" target="_blank">📍 Salón [Nombre]</a>
+   <h2>
+    Ubicaciones
+   </h2>
+   <a href="https://maps.google.com" target="_blank">
+    📍 Parroquia [Nombre]
+   </a>
+   <a href="https://maps.google.com" target="_blank">
+    📍 Salón [Nombre]
+   </a>
   </section>
-
   <!-- Hospedaje -->
   <section class="hospedaje" data-aos="fade-up">
-    <h2>Hospedajes Recomendados</h2>
-    <div>🏨 Hotel 1 – <a href="https://maps.google.com" target="_blank">Ver en Maps</a></div>
-    <div>🏨 Hotel 2 – <a href="https://maps.google.com" target="_blank">Ver en Maps</a></div>
+   <h2>
+    Hospedajes Recomendados
+   </h2>
+   <div>
+    🏨 Hotel 1 –
+    <a href="https://maps.google.com" target="_blank">
+     Ver en Maps
+    </a>
+   </div>
+   <div>
+    🏨 Hotel 2 –
+    <a href="https://maps.google.com" target="_blank">
+     Ver en Maps
+    </a>
+   </div>
   </section>
-
   <!-- Vestimenta -->
   <section data-aos="fade-up">
-    <h2>Código de Vestimenta</h2>
-    <p class="dresscode">Formal · Colores neutros y elegantes</p>
+   <h2>
+    Código de Vestimenta
+   </h2>
+   <p class="dresscode">
+    Formal · Colores neutros y elegantes
+   </p>
   </section>
-
   <!-- Mesa de regalos -->
   <section class="regalos" data-aos="fade-up">
-    <h2>Mesa de Regalos</h2>
-    <a href="https://www.amazon.com.mx/" target="_blank">Amazon</a>
-    <a href="https://www.liverpool.com.mx/" target="_blank">Liverpool</a>
+   <h2>
+    Mesa de Regalos
+   </h2>
+   <a href="https://www.amazon.com.mx/" target="_blank">
+    Amazon
+   </a>
+   <a href="https://www.liverpool.com.mx/" target="_blank">
+    Liverpool
+   </a>
   </section>
-
   <!-- Galería de fotos -->
   <section class="galeria" data-aos="fade-up">
-    <h2>Nuestras Fotos</h2>
-    <div class="galeria">
-      <img src="https://images.unsplash.com/photo-1530023367847-a683933f4171" alt="Foto 1">
-      <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac" alt="Foto 2">
-      <img src="https://images.unsplash.com/photo-1504203700686-0b2c1c1f1e8d" alt="Foto 3">
-    </div>
+   <h2>
+    Nuestras Fotos
+   </h2>
+   <div class="galeria">
+    <img alt="Foto 1" src="https://images.unsplash.com/photo-1530023367847-a683933f4171"/>
+    <img alt="Foto 2" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac"/>
+    <img alt="Foto 3" src="https://images.unsplash.com/photo-1504203700686-0b2c1c1f1e8d"/>
+   </div>
   </section>
-
   <footer>
-    <p>Con cariño, Ángel & [Nombre] 💍</p>
+   <p>
+    Con cariño, Ángel &amp; [Nombre] 💍
+   </p>
   </footer>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000 });
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
   </script>
-</body>
+  <script src="script.js">
+  </script>
+ </body>
 </html>

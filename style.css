@@ -1,0 +1,125 @@
+:root {
+      --verde-oliva: #556B2F;
+      --arena: #E5D3B3;
+      --blanco: #FFFFFF;
+      --oro: #C9A13C;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Lato', sans-serif; 
+      background-color: var(--blanco); 
+      color: var(--verde-oliva);
+      scroll-behavior: smooth;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--oro);
+    }
+
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    /* Portada */
+    header {
+      height: 100vh;
+      background: url("https://images.unsplash.com/photo-1529634806980-3a8b1c4ef91b") no-repeat center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: var(--blanco);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--blanco);
+    }
+    header h1 span { color: var(--oro); }
+    header p { margin-top: 1rem; font-size: 1.2rem; }
+
+    /* Invitados */
+    .invitacion {
+      background: rgba(229, 211, 179, 0.3);
+      padding: 2rem;
+      border-radius: 15px;
+      max-width: 400px;
+      margin: auto;
+    }
+    .invitacion h3 { font-size: 1.5rem; color: var(--verde-oliva); }
+    .invitacion img { margin-top: 1rem; width: 150px; }
+
+    /* Itinerario */
+    .timeline {
+      list-style: none;
+      padding: 0;
+    }
+    .timeline li {
+      margin: 1rem 0;
+      font-size: 1.1rem;
+    }
+
+    /* Ubicaciones */
+    .ubicaciones a {
+      display: block;
+      margin: 0.5rem 0;
+      color: var(--verde-oliva);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Hospedaje */
+    .hospedaje div {
+      margin: 1rem 0;
+    }
+
+    /* Vestimenta */
+    .dresscode {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--oro);
+    }
+
+    /* Mesa de regalos */
+    .regalos a {
+      display: inline-block;
+      margin: 1rem;
+      padding: 1rem 2rem;
+      border: 2px solid var(--oro);
+      border-radius: 10px;
+      color: var(--oro);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .regalos a:hover {
+      background: var(--oro);
+      color: var(--blanco);
+    }
+
+    /* Fotos */
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .galeria img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .galeria img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: var(--verde-oliva);
+      color: var(--blanco);
+      padding: 2rem;
+      text-align: center;
+    }
