@@ -32,7 +32,7 @@ img{max-width:100%;display:block}
   /* más alto para lucir mejor las fotos */
   min-height: clamp(560px, 82vh, 1100px);
   position:relative;
-  background:#111 url('img/headers/Imagen_001.jpg') center/cover no-repeat;
+  background:#111 url('img/headers/Imagen_001.webp') center/cover no-repeat;
   transition:background-image .8s ease;
 }
 .hero-overlay{

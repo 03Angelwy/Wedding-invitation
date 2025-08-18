@@ -21,11 +21,27 @@
   const heroEl = document.getElementById("hero");
   const imgs = (cfg.HERO_IMAGES || []).filter(Boolean);
   let idx = 0;
-  function setHero(i){ if(heroEl && imgs[i]) heroEl.style.backgroundImage = `url('${imgs[i]}')`; }
-  setHero(0);
-  if(imgs.length > 1){
-    setInterval(()=>{ idx = (idx+1)%imgs.length; setHero(idx); }, 6000);
+  // Rotación del hero sin pantallazo negro
+const showHero = (src) => { if (heroEl) heroEl.style.backgroundImage = `url('${src}')`; };
+
+function swapWhenReady(nextSrc) {
+  const im = new Image();
+  im.onload  = () => showHero(nextSrc);  // sólo cambia cuando ya cargó
+  im.onerror = () => {};                 // opcional: ignora errores
+  im.src = nextSrc;
+}
+
+// pinta la primera y luego rota
+if (imgs.length) {
+  showHero(imgs[0]);
+  if (imgs.length > 1) {
+    setInterval(() => {
+      idx = (idx + 1) % imgs.length;
+      swapWhenReady(imgs[idx]);
+    }, 6000);
   }
+}
+
 
   const start = new Date(cfg.startLocal || "2025-11-29T16:00:00-06:00");
   const end   = new Date(cfg.endLocal   || "2025-11-29T17:00:00-06:00");
