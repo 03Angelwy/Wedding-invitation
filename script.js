@@ -1,4 +1,21 @@
 (function(){
+    // Siempre empezar arriba al cargar/recargar o volver desde el historial
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  function goTop() { window.scrollTo(0, 0); }
+
+  window.addEventListener('load', goTop);           // recarga normal
+  window.addEventListener('pageshow', (e) => {      // vuelta desde bfcache (Safari/Firefox)
+    if (e.persisted) goTop();
+  });
+  window.addEventListener('beforeunload', goTop);   // justo antes de salir/recargar
+  // Quita el hash de la URL para que no salte a secciones al refrescar
+  if (location.hash) {
+    history.replaceState(null, '', location.pathname + location.search);
+  }
+
   const cfg = window.INVITE_CONFIG || {};
 
   const heroEl = document.getElementById("hero");

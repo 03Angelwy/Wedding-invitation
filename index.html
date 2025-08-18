@@ -73,27 +73,51 @@
     <section class="section" id="familia">
       <div class="container">
         <h2 class="title">Celebra con nosotros este día tan maravilloso</h2>
+
+        <!-- Padres -->
         <div class="two-col">
-          <div>
+          <div class="col">
             <h3 class="subtitle">Padres del Novio</h3>
-            <ul class="names" id="padres-novia">
-              <li>Araceli Alvarado</li>
-              <li>Jose Angel Alatriste</li>
+            <ul class="names">
+              <li data-g="f">Araceli Alvarado</li>
+              <li data-g="m">Jose Angel Alatriste</li>
             </ul>
           </div>
-          <div>
+
+          <div class="col">
             <h3 class="subtitle">Padres de la Novia</h3>
-            <ul class="names" id="padres-novio">
-              <li>--</li>
-              <li>Clemente Chacon</li>
+            <ul class="names">
+              <li data-g="f">—</li>
+              <li data-g="m">Clemente Chacón</li>
             </ul>
           </div>
         </div>
-        <div class="padrinos">
-          <h3 class="subtitle">Padrinos</h3>
-          <ul class="names grid-2" id="padrinos-list">
-            <li>—</li><li>—</li>
-          </ul>
+
+        <!-- Padrinos: misa, lazo, anillos -->
+        <div class="padrinos-grid">
+          <div class="padrino-group">
+            <h3 class="subtitle">Padrinos de misa</h3>
+            <ul class="names">
+              <li data-g="m">Leticia Guadalupe Alatriste</li>
+              <li data-g="f">Pedro Flores</li>
+            </ul>
+          </div>
+
+          <div class="padrino-group">
+            <h3 class="subtitle">Padrinos de lazo</h3>
+            <ul class="names">
+              <li data-g="m">Nombre</li>
+              <li data-g="f">Nombre</li>
+            </ul>
+          </div>
+
+          <div class="padrino-group">
+            <h3 class="subtitle">Padrinos de anillos</h3>
+            <ul class="names">
+              <li data-g="m">Anselma Almanza</li>
+              <li data-g="f">J Ascencion Alatriste</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -198,7 +222,12 @@
       APPLE_WALLET_URL: "",   // pon aquí tu enlace real de pase
       MAPS: { IGLESIA: "https://maps.app.goo.gl/aZjd2J7CnB9oTFD8A",
               RECEPCION: "https://maps.app.goo.gl/wW3ppQojVLgkPAQy9" },
-      HERO_IMAGES: ["img/cover1.jpg","img/cover2.jpg","img/cover3.jpg"],
+      HERO_IMAGES: [
+      "img/headers/Imagen_001.jpg",
+      "img/headers/Imagen_002.jpg",
+      "img/headers/Imagen_003.jpg",
+      "img/headers/Imagen_004.jpg"
+    ],
       GALLERY_IMAGES: ["img/gallery1.jpg","img/gallery2.jpg","img/gallery3.jpg"]
     };
   </script>
