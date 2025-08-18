@@ -9,10 +9,14 @@
 html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
 img{max-width:100%;display:block}
+
+/* Layout base */
 .container { max-width: 980px; margin: 0 auto; }
 .title{font-family:"Playfair Display",serif;font-size:clamp(24px,4.5vw,36px);margin:0 0 14px;text-align:center}
 .subtitle{font-family:"Playfair Display",serif;margin:8px 0 8px}
 .muted{opacity:.8}
+
+/* Botones / tarjetas */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:12px 20px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;font-weight:600}
 .btn.gold{background:var(--gold);color:#fff}
 .btn.light{background:#fff;color:#333;border-color:#ddd}
@@ -23,23 +27,42 @@ img{max-width:100%;display:block}
 
 .site-footer{text-align:center;padding:30px 0 60px;color:#666}
 
-.hero{min-height:58vh;position:relative;background:#111 url('img/headers/Imagen_001.jpg') center/cover no-repeat;transition:background-image .8s ease}
-.hero-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center}
+/* ===== HERO (encabezado más grande) ===== */
+.hero{
+  /* más alto para lucir mejor las fotos */
+  min-height: clamp(560px, 82vh, 1100px);
+  position:relative;
+  background:#111 url('img/headers/Imagen_001.jpg') center/cover no-repeat;
+  transition:background-image .8s ease;
+}
+.hero-overlay{
+  position:absolute; inset:0;
+  display:flex; align-items:flex-end; justify-content:center;
+  /* lo pega abajo con respiro */
+  padding-bottom: clamp(20px, 5vw, 60px);
+}
 .glass-top{background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.25))}
-.hero-inner{width:min(1100px,92%);margin-top:0;background:var(--glass);backdrop-filter:blur(6px);border-radius:1200px 1200px 0 0;text-align:center;padding:32px 20px 28px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.hero-inner{
+  width:min(1100px,92%); margin-top:0;
+  background:var(--glass); backdrop-filter:blur(6px);
+  border-radius:1200px 1200px 0 0; text-align:center;
+  padding:32px 20px 28px; box-shadow:0 10px 30px rgba(0,0,0,.08)
+}
 .brand{font-family:"Playfair Display",serif;font-size:clamp(34px,6vw,56px);margin:0}
 .brand span{color:var(--gold)}
 .hero-sub{opacity:.9;margin:6px 0 14px}
 
+/* Contador */
 .countdown{display:grid;gap:16px;justify-content:center;grid-template-columns:repeat(4,minmax(84px,112px));margin:10px 0 24px}
 .countdown .box{background:var(--gold);color:#fff;border-radius:14px;padding:14px 12px;box-shadow:0 6px 16px rgba(0,0,0,.12)}
 .countdown .val{font-weight:800;font-size:clamp(22px,4vw,34px);line-height:1}
 .countdown .lbl{text-transform:uppercase;letter-spacing:.6px;font-size:12px;margin-top:4px;opacity:.9}
-
 @media (max-width:560px){
+  .hero{ min-height: 78vh; }
   .countdown{grid-template-columns:repeat(2,minmax(120px,1fr));gap:12px}
 }
 
+/* ===== Invitados ===== */
 #invitados .guest-name{font-family:"Playfair Display",serif;font-size:clamp(20px,4vw,28px);text-align:center;margin:4px 0}
 #invitados .guest-note{text-align:center;margin:0 0 10px}
 .pases{display:flex;flex-direction:column;align-items:center;gap:6px;margin:10px 0}
@@ -47,12 +70,34 @@ img{max-width:100%;display:block}
 .restric{text-align:center;margin:6px 0 14px}
 .wallets{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-top:6px}
 .actions-row{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-top:12px}
-.two-col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; justify-items: center; }
-.two-col .col { width: 100%; text-align: center; }
-@media (max-width:720px){.two-col{grid-template-columns:1fr}}
-.names { list-style: none; padding: 0; margin: 10px 0 0; line-height: 1.7; text-align: center; }
-.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
 
+/* ===== Padres / Padrinos (centrado + contraste + divisor) ===== */
+.two-col{
+  display:grid; grid-template-columns: repeat(2, 1fr);
+  gap: 32px; justify-items: center; position: relative;
+}
+.two-col::after{
+  content:""; position:absolute; top:12px; bottom:12px; left:50%;
+  width:1px; background: rgba(0,0,0,.08); transform:translateX(-50%);
+}
+.two-col .col{ width:100%; text-align:center; }
+
+/* Tarjetitas para contraste */
+.two-col .col,
+.padrinos-grid .padrino-group{
+  background:#fff; border:1px solid #eee;
+  border-radius:16px; padding:16px 18px;
+  box-shadow:0 6px 16px rgba(0,0,0,.06);
+}
+
+@media (max-width:720px){
+  .two-col{grid-template-columns:1fr}
+  .two-col::after{ display:none; }
+}
+
+.names{ list-style:none; padding:0; margin:10px 0 0; line-height:1.7; text-align:center; }
+
+/* ===== Timeline ===== */
 .timeline{position:relative;margin:10px auto;padding:20px 0;max-width:760px}
 .timeline:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:#ddd;transform:translateX(-50%)}
 .t-item{display:grid;grid-template-columns:1fr 1fr;align-items:center;margin:26px 0;opacity:0;transform:translateY(20px);transition:all .6s ease}
@@ -64,6 +109,7 @@ img{max-width:100%;display:block}
 .t-dot{background:#fff;border:2px solid var(--gold);color:#333;border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;margin:auto;box-shadow:0 4px 10px rgba(0,0,0,.08)}
 .t-content h4{margin:0 0 6px;font-family:"Playfair Display",serif}
 
+/* ===== Ubicaciones ===== */
 .bg-paper{background:var(--paper)}
 .places-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 @media (max-width:920px){.places-2{grid-template-columns:1fr}}
@@ -74,28 +120,31 @@ img{max-width:100%;display:block}
 .place-meta .hour{font-weight:700}
 .place-meta .name{font-family:"Playfair Display",serif}
 
+/* ===== Vestimenta / Regalos ===== */
 .chips{list-style:none;padding:0;margin:10px 0;display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
 .chips li{padding:8px 12px;border-radius:999px;background:#fff;border:1px solid #eee}
 
+/* ===== Galería ===== */
 .gallery{position:relative;max-width:620px;margin:10px auto;border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.1);overflow:hidden;background:#fff}
 .gallery img{width:100%;height:520px;object-fit:cover;background:#eee}
 .gallery .nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);color:#fff;border:none;width:38px;height:38px;border-radius:50%;cursor:pointer}
 .gallery .prev{left:10px}.gallery .next{right:10px}
 .gallery-pager{text-align:center;margin-top:8px;opacity:.8}
 
+/* ===== Secciones ===== */
 .section{padding:40px 0}
 
-.padrinos-grid { 
-  display: grid; 
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 24px; 
-  margin-top: 24px; 
-  justify-items: center; 
-  text-align: center; 
+/* ===== Padrinos (rejilla) ===== */
+.padrinos-grid{
+  display:grid; grid-template-columns:repeat(3, 1fr);
+  gap:24px; margin-top:24px; justify-items:center; text-align:center;
 }
-.padrino-group { width: 100%; }
+.padrino-group{ width:100%; }
 
 @media (max-width: 800px){
-  .two-col { grid-template-columns: 1fr; }
-  .padrinos-grid { grid-template-columns: 1fr; }
+  .padrinos-grid { grid-template-columns:1fr; }
 }
+
+/* ===== Animación reveal genérica (usa .reveal-up en el HTML) ===== */
+.reveal-up{opacity:0; transform:translateY(12px); transition:all .6s ease;}
+.reveal-up.is-visible{opacity:1; transform:none;}
