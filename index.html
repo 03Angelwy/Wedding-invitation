@@ -1,146 +1,213 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Invitación de Boda
-  </title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&amp;family=Lato&amp;display=swap" rel="stylesheet"/>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  </link>
-  <link href="style.css" rel="stylesheet"/>
- </head>
- <body>
-  <!-- Portada -->
-  <header>
-   <h1 data-aos="fade-down">
-    Suleydy
-    <span>
-     &amp;
-    </span>
-    Angel
-   </h1>
-   <p data-aos="fade-up">
-    ¡Nos casamos!
-    <br/>
-    22 de Noviembre 2025
-   </p>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ángel & Suleydy — Invitación</title>
+  <meta name="description" content="Invitación de boda — Ángel & Suleydy">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <link rel="stylesheet" href="style.css?v=20250817-4">
+  <style>
+    /* Si no hay URL real para Wallet, oculta los botones de forma segura (fallback sin JS) */
+    a[data-wallet][href="#"]{ display:none; }
+  </style>
+</head>
+<body>
+  <header class="hero" id="hero">
+    <div class="hero-overlay glass-top">
+      <div class="hero-inner">
+        <h1 class="brand">Ángel <span>&</span> Suleydy</h1>
+        <p class="hero-sub" id="wedding-date">Sábado 29 de noviembre de 2025</p>
+        <div class="countdown" id="contador">
+          <div class="box"><div id="d-val" class="val">00</div><div class="lbl">Días</div></div>
+          <div class="box"><div id="h-val" class="val">00</div><div class="lbl">Hrs</div></div>
+          <div class="box"><div id="m-val" class="val">00</div><div class="lbl">Mins</div></div>
+          <div class="box"><div id="s-val" class="val">00</div><div class="lbl">Segs</div></div>
+        </div>
+        <!-- Fallback estático: 29 nov 2025 16:00-17:00 CDMX -> 22:00-23:00Z -->
+        <a id="btn-gcal" class="btn gold" target="_blank" rel="noopener"
+           href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda%20de%20%C3%81ngel%20%26%20Suleydy&dates=20251129T220000Z/20251129T230000Z&details=Acompa%C3%B1anos%20a%20celebrar%20nuestra%20boda.&location=Parroquia%20%5BNombre%5D%2C%20%5BCiudad%20%2F%20Estado%5D&sf=true&output=xml">
+          📅 Agregar a Google Calendar
+        </a>
+      </div>
+    </div>
   </header>
-  <!-- Contador regresivo -->
-   <div id="contador" class="contador"></div>
-  <!-- Invitados -->
-  <section data-aos="fade-up">
-   <h2>
-    Tu Invitación
-   </h2>
-   <div class="invitacion">
-    <h3>
-     Querida Marianita
-    </h3>
-    <p>
-     ¡Te esperamos con mucho cariño!
-    </p>
-    <p>
-     <b>
-      Pases:
-     </b>
-     1
-    </p>
-    <p>
-     No niños
-    </p>
-    <!-- QR de ejemplo -->
-    <img alt="QR Invitación" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=Invitación+Marianita"/>
-   </div>
-  </section>
-  <!-- Itinerario -->
-  <section data-aos="fade-up">
-   <h2>
-    Itinerario
-   </h2>
-   <ul class="timeline">
-    <li>
-     ⛪ Ceremonia: 4:00 PM – Parroquia [Nombre]
-    </li>
-    <li>
-     🍽️ Recepción: 6:00 PM – Salón [Nombre]
-    </li>
-    <li>
-     🎉 Fiesta: 8:00 PM – Música y baile
-    </li>
-   </ul>
-  </section>
-  <!-- Ubicaciones -->
-  <section class="ubicaciones" data-aos="fade-up">
-   <h2>
-    Ubicaciones
-   </h2>
-   <a href="https://maps.google.com" target="_blank">
-    📍 Parroquia "San Miguel"
-   </a>
-   <a href="https://maps.google.com" target="_blank">
-    📍 Salón "Santa Fe World"
-   </a>
-  </section>
-  <!-- Hospedaje -->
-  <section class="hospedaje" data-aos="fade-up">
-   <h2>
-    Hospedajes Recomendados
-   </h2>
-   <div>
-    🏨 Hotel 1 –
-    <a href="https://maps.google.com" target="_blank">
-     Ver en Maps
-    </a>
-   </div>
-   <div>
-    🏨 Hotel 2 –
-    <a href="https://maps.google.com" target="_blank">
-     Ver en Maps
-    </a>
-   </div>
-  </section>
-  <!-- Vestimenta -->
-  <section data-aos="fade-up">
-   <h2>
-    Código de Vestimenta
-   </h2>
-   <p class="dresscode">
-    Formal · Colores neutros y elegantes
-   </p>
-  </section>
-  <!-- Mesa de regalos -->
-  <section class="regalos" data-aos="fade-up">
-   <h2>
-    Mesa de Regalos
-   </h2>
-   <a href="https://www.amazon.com.mx/" target="_blank">
-    Amazon
-   </a>
-   <a href="https://www.liverpool.com.mx/" target="_blank">
-    Liverpool
-   </a>
-  </section>
-  <!-- Galería de fotos -->
-  <section class="galeria" data-aos="fade-up">
-   <h2>
-    Nuestras Fotos
-   </h2>
-   <div class="galeria">
-    <img alt="Foto 1" src="https://images.unsplash.com/photo-1530023367847-a683933f4171"/>
-    <img alt="Foto 2" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac"/>
-    <img alt="Foto 3" src="https://images.unsplash.com/photo-1504203700686-0b2c1c1f1e8d"/>
-   </div>
-  </section>
-  <footer>
-   <p>
-    Con cariño, Angel &amp; Suleydy 💍
-   </p>
+
+  <main>
+    <section class="section" id="invitados">
+      <div class="container card glass">
+        <h2 class="title">Están Invitados</h2>
+        <p class="guest-name" id="guest-name">Familia</p>
+        <p class="guest-note" id="guest-note">¡Los esperamos!</p>
+        <div class="pases">
+          <span class="pases-num" id="pases-num">0</span>
+          <div class="pases-label">Invitación válida por <span id="pases-label">0</span> PASES</div>
+        </div>
+        <p class="restric" id="restric">—</p>
+
+        <div class="wallets">
+          <!-- Deja href="#" hasta que tengas los enlaces reales de pase -->
+          <a id="btn-google-wallet" data-wallet class="btn outline" href="#" target="_blank" rel="noopener">Guardar en Google Wallet</a>
+          <a id="btn-apple-wallet"  data-wallet class="btn outline" href="#" target="_blank" rel="noopener">Agregar a Apple Wallet</a>
+        </div>
+
+        <div class="actions-row">
+          <button id="btn-rsvp" class="btn gold">Confirma tu asistencia</button>
+          <button id="btn-qr" class="btn light">Mostrar Código QR</button>
+        </div>
+      </div>
+    </section>
+
+    <dialog id="qr-modal">
+      <div class="qr-box">
+        <div id="qr-canvas"></div>
+        <p id="qr-text" class="qr-text"></p>
+        <form method="dialog"><button class="btn light">Cerrar</button></form>
+      </div>
+    </dialog>
+
+    <section class="section" id="familia">
+      <div class="container">
+        <h2 class="title">Celebra con nosotros este día tan maravilloso</h2>
+        <div class="two-col">
+          <div>
+            <h3 class="subtitle">Padres de la Novia</h3>
+            <ul class="names" id="padres-novia">
+              <li>Sofía Rodríguez</li>
+              <li>Antonio Ramírez</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="subtitle">Padres del Novio</h3>
+            <ul class="names" id="padres-novio">
+              <li>Janeth Gutierrez</li>
+              <li>Francisco Macías Esparza</li>
+            </ul>
+          </div>
+        </div>
+        <div class="padrinos">
+          <h3 class="subtitle">Padrinos</h3>
+          <ul class="names grid-2" id="padrinos-list">
+            <li>—</li><li>—</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="itinerario">
+      <div class="container">
+        <h2 class="title">Itinerario</h2>
+        <div class="timeline">
+          <div class="t-item"><div class="t-dot">⛪</div><div class="t-content"><h4>Ceremonia Religiosa</h4><p>Acompáñanos a recibir la bendición de Dios</p><p><strong>Hora:</strong> 4:00 p.m.</p></div></div>
+          <div class="t-item"><div class="t-dot">🎉</div><div class="t-content"><h4>Recepción</h4><p>Tómate fotos con nosotros</p><p><strong>Hora:</strong> 9:00 p.m.</p></div></div>
+          <div class="t-item"><div class="t-dot">💍</div><div class="t-content"><h4>Ceremonia Civil</h4><p>No te pierdas nuestro intercambio de votos</p><p><strong>Hora:</strong> 7:00 p.m.</p></div></div>
+          <div class="t-item"><div class="t-dot">🍽️</div><div class="t-content"><h4>Comida</h4><p>Disfruta con nosotros</p><p><strong>Hora:</strong> 8:00 p.m.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-paper" id="ubicaciones">
+      <div class="container">
+        <h2 class="title">Ubicaciones</h2>
+        <div class="places-2">
+          <div class="place-card">
+            <figure class="oval">
+              <img src="https://images.unsplash.com/photo-1504610926078-a1611febcad3?q=80&w=1200&auto=format&fit=crop" alt="Iglesia">
+              <figcaption>
+                <!-- Fallbacks estáticos por si JS no corre -->
+                <a id="link-iglesia" class="btn gold" target="_blank" rel="noopener"
+                   href="https://maps.google.com/?q=Templo+de+San+Antonio+de+Padua+Aguascalientes">Ver Ubicación</a>
+              </figcaption>
+            </figure>
+            <div class="place-meta">
+              <div class="hour">4:00 p.m.</div>
+              <div class="name" id="iglesia-nombre">Templo de San Antonio de Padua</div>
+            </div>
+          </div>
+          <div class="place-card">
+            <figure class="oval">
+              <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=1200&auto=format&fit=crop" alt="Recepción">
+              <figcaption>
+                <a id="link-recepcion" class="btn gold" target="_blank" rel="noopener"
+                   href="https://maps.google.com/?q=Quinta+Real+Aguascalientes">Ver Ubicación</a>
+              </figcaption>
+            </figure>
+            <div class="place-meta">
+              <div class="hour">9:00 p.m.</div>
+              <div class="name" id="recepcion-nombre">Quinta Real Aguascalientes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="vestimenta">
+      <div class="container card glass">
+        <h2 class="title">Código de vestimenta</h2>
+        <ul class="chips">
+          <li>Formal</li>
+          <li>Colores neutros</li>
+          <li>Sin tenis</li>
+        </ul>
+        <p class="muted">Sugerencias: Traje y vestido formal. Evita colores muy claros si no estás segur@.</p>
+      </div>
+    </section>
+
+    <section class="section" id="regalos">
+      <div class="container card glass">
+        <h2 class="title">Mesa de regalos</h2>
+        <p>El mejor regalo es tu presencia. Si deseas apoyarnos:</p>
+        <div class="links-row">
+          <a class="btn outline" id="link-regalo-1" target="_blank" rel="noopener">Liverpool</a>
+          <a class="btn outline" id="link-regalo-2" target="_blank" rel="noopener">Amazon</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="galeria">
+      <div class="container">
+        <h2 class="title">Galería</h2>
+        <div class="gallery">
+          <button class="nav prev" aria-label="Anterior">‹</button>
+          <img id="gallery-img" alt="Foto">
+          <button class="nav next" aria-label="Siguiente">›</button>
+        </div>
+        <div class="gallery-pager"><span id="gallery-index">1</span> / <span id="gallery-total">1</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© 2025 Ángel & Suleydy</small>
+    </div>
   </footer>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
+
+  <script>
+    window.INVITE_CONFIG = {
+      startLocal: "2025-11-29T16:00:00-06:00",
+      endLocal:   "2025-11-29T17:00:00-06:00",
+      SHEETS_ENDPOINT: "",
+      LOCAL_SAMPLE_JSON: "data/sample-invitados.json",
+      RSVP_FORM_URL: "https://forms.gle/xxxxxxxx",
+      GOOGLE_WALLET_URL: "",  // pon aquí tu enlace real de pase
+      APPLE_WALLET_URL: "",   // pon aquí tu enlace real de pase
+      MAPS: { IGLESIA: "https://maps.google.com/?q=Templo+de+San+Antonio+de+Padua+Aguascalientes",
+              RECEPCION: "https://maps.google.com/?q=Quinta+Real+Aguascalientes" },
+      HERO_IMAGES: ["img/cover1.jpg","img/cover2.jpg","img/cover3.jpg"],
+      GALLERY_IMAGES: ["img/gallery1.jpg","img/gallery2.jpg","img/gallery3.jpg"]
+    };
   </script>
-  <script src="script.js">
-  </script>
- </body>
+  <script src="script.js?v=20250817-4"></script>
+
+  <noscript>
+    <div style="text-align:center;padding:10px;color:#a00">
+      Activa JavaScript para ver el contador, datos del invitado y el QR.
+    </div>
+  </noscript>
+</body>
 </html>

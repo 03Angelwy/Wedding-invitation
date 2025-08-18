@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "idHash": "abc123",
+      "nombre": "Marianita",
+      "pases": 1,
+      "restric": "No niños",
+      "walletGoogle": "",
+      "walletApple": "",
+      "rsvpUrl": "https://forms.gle/xxxxxxxx"
+    },
+    {
+      "idHash": "xyz789",
+      "nombre": "Familia Pérez",
+      "pases": 2,
+      "restric": "",
+      "walletGoogle": "",
+      "walletApple": "",
+      "rsvpUrl": "https://forms.gle/xxxxxxxx"
+    }
+  ]
+}
