@@ -1,34 +1,33 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Angel & Suleydy — Invitación</title>
-  <meta name="description" content="Invitación de boda — Ángel & Suleydy">
-  <link rel="icon" href="favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Invitación de boda — Ángel & Suleydy" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <script defer src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
-  <link rel="stylesheet" href="style.css?v=20250817-4">
-  <style>
-    /* Si no hay URL real para Wallet, oculta los botones de forma segura (fallback sin JS) */
-    a[data-wallet][href="#"]{ display:none; }
-  </style>
+  <link rel="stylesheet" href="style.css?v=2025-08-20-arras" />
+  <style> a[data-wallet][href="#"]{ display:none; } </style>
 </head>
 <body>
+  <!-- ======================== HERO (pantalla completa) ======================== -->
   <header class="hero" id="hero">
     <div class="hero-overlay glass-top">
       <div class="hero-inner">
         <h1 class="brand">Ángel <span>&</span> Suleydy</h1>
-        <p class="hero-sub" id="wedding-date">Sábado 29 de noviembre de 2025</p>
-        <div class="countdown" id="contador">
+        <p class="hero-sub" id="wedding-date">Sábado, 29 de noviembre de 2025</p>
+
+        <div class="countdown" id="contador" aria-label="Cuenta regresiva">
           <div class="box"><div id="d-val" class="val">00</div><div class="lbl">Días</div></div>
           <div class="box"><div id="h-val" class="val">00</div><div class="lbl">Hrs</div></div>
           <div class="box"><div id="m-val" class="val">00</div><div class="lbl">Mins</div></div>
           <div class="box"><div id="s-val" class="val">00</div><div class="lbl">Segs</div></div>
         </div>
-        <!-- Fallback estático: 29 nov 2025 16:00-17:00 CDMX -> 22:00-23:00Z -->
+
         <a id="btn-gcal" class="btn gold" target="_blank" rel="noopener"
            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda%20de%20%C3%81ngel%20%26%20Suleydy&dates=20251129T220000Z/20251129T230000Z&details=Acompa%C3%B1anos%20a%20celebrar%20nuestra%20boda.&location=Parroquia%20%5BNombre%5D%2C%20%5BCiudad%20%2F%20Estado%5D&sf=true&output=xml">
           📅 Agregar a Google Calendar
@@ -38,11 +37,13 @@
   </header>
 
   <main>
+    <!-- ======================== Invitados ======================== -->
     <section class="section" id="invitados">
       <div class="container card glass">
         <h2 class="title">Están Invitados</h2>
         <p class="guest-name" id="guest-name">Familia</p>
         <p class="guest-note" id="guest-note">¡Los esperamos!</p>
+
         <div class="pases">
           <span class="pases-num" id="pases-num">0</span>
           <div class="pases-label">Invitación válida por <span id="pases-label">0</span> PASES</div>
@@ -50,7 +51,6 @@
         <p class="restric" id="restric">—</p>
 
         <div class="wallets">
-          <!-- Deja href="#" hasta que tengas los enlaces reales de pase -->
           <a id="btn-google-wallet" data-wallet class="btn outline" href="#" target="_blank" rel="noopener">Guardar en Google Wallet</a>
           <a id="btn-apple-wallet"  data-wallet class="btn outline" href="#" target="_blank" rel="noopener">Agregar a Apple Wallet</a>
         </div>
@@ -62,6 +62,7 @@
       </div>
     </section>
 
+    <!-- ======================== Modal QR ======================== -->
     <dialog id="qr-modal">
       <div class="qr-box">
         <div id="qr-canvas"></div>
@@ -70,58 +71,67 @@
       </div>
     </dialog>
 
+    <!-- ======================== Familias y Padrinos ======================== -->
     <section class="section" id="familia">
       <div class="container">
         <h2 class="title">Celebra con nosotros este día tan maravilloso</h2>
 
-        <!-- Padres -->
         <div class="two-col">
           <div class="col">
             <h3 class="subtitle">Padres del Novio</h3>
             <ul class="names">
-              <li data-g="f">Araceli Alvarado</li>
-              <li data-g="m">Jose Angel Alatriste</li>
+              <li>Araceli Alvarado</li>
+              <li>Jose Angel Alatriste</li>
             </ul>
           </div>
 
           <div class="col">
             <h3 class="subtitle">Padres de la Novia</h3>
             <ul class="names">
-              <li data-g="f">Carmen Rios</li>
-              <li data-g="m">Clemente Chacón</li>
+              <li>Carmen Rios</li>
+              <li>Clemente Chacón</li>
             </ul>
           </div>
         </div>
 
-        <!-- Padrinos: misa, lazo, anillos -->
+        <!-- Padrinos: ahora 4 tarjetas (misa, lazo, anillos, arras) -->
         <div class="padrinos-grid">
           <div class="padrino-group">
             <h3 class="subtitle">Padrinos de misa</h3>
             <ul class="names">
-              <li data-g="m">Leticia Guadalupe Alatriste</li>
-              <li data-g="f">Pedro Flores</li>
+              <li>Leticia Guadalupe Alatriste</li>
+              <li>Pedro Flores</li>
             </ul>
           </div>
 
           <div class="padrino-group">
             <h3 class="subtitle">Padrinos de lazo</h3>
             <ul class="names">
-              <li data-g="m">Nombre</li>
-              <li data-g="f">Nombre</li>
+              <li>Nombre</li>
+              <li>Nombre</li>
             </ul>
           </div>
 
           <div class="padrino-group">
             <h3 class="subtitle">Padrinos de anillos</h3>
             <ul class="names">
-              <li data-g="m">Anselma Almanza</li>
-              <li data-g="f">J Ascencion Alatriste</li>
+              <li>Anselma Almanza</li>
+              <li>J Ascencion Alatriste</li>
+            </ul>
+          </div>
+
+          <div class="padrino-group">
+            <h3 class="subtitle">Padrinos de arras</h3>
+            <ul class="names">
+              <li>Nombre</li>
+              <li>Nombre</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ======================== Itinerario ======================== -->
     <section class="section" id="itinerario">
       <div class="container">
         <h2 class="title">Itinerario</h2>
@@ -134,15 +144,15 @@
       </div>
     </section>
 
+    <!-- ======================== Ubicaciones ======================== -->
     <section class="section bg-paper" id="ubicaciones">
       <div class="container">
         <h2 class="title">Ubicaciones</h2>
         <div class="places-2">
           <div class="place-card">
             <figure class="oval">
-              <img src="https://images.unsplash.com/photo-1504610926078-a1611febcad3?q=80&w=1200&auto=format&fit=crop" alt="Iglesia">
+              <img src="https://images.unsplash.com/photo-1504610926078-a1611febcad3?q=80&w=1200&auto=format&fit=crop" alt="Iglesia" />
               <figcaption>
-                <!-- Fallbacks estáticos por si JS no corre -->
                 <a id="link-iglesia" class="btn gold" target="_blank" rel="noopener"
                    href="https://maps.google.com/?q=Templo+de+San+Antonio+de+Padua+Aguascalientes">Ver Ubicación</a>
               </figcaption>
@@ -154,7 +164,7 @@
           </div>
           <div class="place-card">
             <figure class="oval">
-              <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=1200&auto=format&fit=crop" alt="Recepción">
+              <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=1200&auto=format&fit=crop" alt="Recepción" />
               <figcaption>
                 <a id="link-recepcion" class="btn gold" target="_blank" rel="noopener"
                    href="https://maps.google.com/?q=Quinta+Real+Aguascalientes">Ver Ubicación</a>
@@ -169,6 +179,7 @@
       </div>
     </section>
 
+    <!-- ======================== Vestimenta ======================== -->
     <section class="section" id="vestimenta">
       <div class="container card glass">
         <h2 class="title">Código de vestimenta</h2>
@@ -182,6 +193,7 @@
       </div>
     </section>
 
+    <!-- ======================== Regalos ======================== -->
     <section class="section" id="regalos">
       <div class="container card glass">
         <h2 class="title">Mesa de regalos</h2>
@@ -193,12 +205,13 @@
       </div>
     </section>
 
+    <!-- ======================== Galería ======================== -->
     <section class="section" id="galeria">
       <div class="container">
         <h2 class="title">Galería</h2>
         <div class="gallery">
           <button class="nav prev" aria-label="Anterior">‹</button>
-          <img id="gallery-img" alt="Foto">
+          <img id="gallery-img" alt="Foto" />
           <button class="nav next" aria-label="Siguiente">›</button>
         </div>
         <div class="gallery-pager"><span id="gallery-index">1</span> / <span id="gallery-total">1</span></div>
@@ -212,6 +225,7 @@
     </div>
   </footer>
 
+  <!-- ======================== Configuración y JS ======================== -->
   <script>
     window.INVITE_CONFIG = {
       startLocal: "2025-11-22T16:00:00-06:00",
@@ -219,20 +233,22 @@
       SHEETS_ENDPOINT: "",
       LOCAL_SAMPLE_JSON: "data/sample-invitados.json",
       RSVP_FORM_URL: "https://forms.gle/xxxxxxxx",
-      GOOGLE_WALLET_URL: "",  // pon aquí tu enlace real de pase
-      APPLE_WALLET_URL: "",   // pon aquí tu enlace real de pase
-      MAPS: { IGLESIA: "https://maps.app.goo.gl/aZjd2J7CnB9oTFD8A",
-              RECEPCION: "https://maps.app.goo.gl/wW3ppQojVLgkPAQy9" },
+      GOOGLE_WALLET_URL: "",
+      APPLE_WALLET_URL: "",
+      MAPS: {
+        IGLESIA:   "https://maps.app.goo.gl/aZjd2J7CnB9oTFD8A",
+        RECEPCION: "https://maps.app.goo.gl/wW3ppQojVLgkPAQy9"
+      },
       HERO_IMAGES: [
-      "img/headers/Imagen_001.webp",
-      "img/headers/Imagen_002.webp",
-      "img/headers/Imagen_003.webp",
-      "img/headers/Imagen_004.webp"
-    ],
+        "img/headers/Imagen_001.webp",
+        "img/headers/Imagen_002.webp",
+        "img/headers/Imagen_003.webp",
+        "img/headers/Imagen_004.webp"
+      ],
       GALLERY_IMAGES: ["img/gallery1.jpg","img/gallery2.jpg","img/gallery3.jpg"]
     };
   </script>
-  <script src="script.js?v=20250817-4"></script>
+  <script src="script.js?v=2025-08-20-arras"></script>
 
   <noscript>
     <div style="text-align:center;padding:10px;color:#a00">
