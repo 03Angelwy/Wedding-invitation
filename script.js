@@ -43,8 +43,8 @@ if (imgs.length) {
 }
 
 
-  const start = new Date(cfg.startLocal || "2025-11-29T16:00:00-06:00");
-  const end   = new Date(cfg.endLocal   || "2025-11-29T17:00:00-06:00");
+  const start = new Date(cfg.startLocal || "2025-11-22T11:30:00-06:00");
+  const end   = new Date(cfg.endLocal   || "2025-11-23T01:00:00-06:00");
   const fmt = new Intl.DateTimeFormat("es-MX",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
   const pretty = s => s.charAt(0).toUpperCase()+s.slice(1);
   const dateEl = document.getElementById("wedding-date");
@@ -73,7 +73,7 @@ if (imgs.length) {
     + `&text=${enc("Boda de Ángel & Suleydy")}`
     + `&dates=${toICSDate(start)}/${toICSDate(end)}`
     + `&details=${enc("Acompáñanos a celebrar nuestra boda.")}`
-    + `&location=${enc("Parroquia [Nombre], [Ciudad / Estado]")}`
+    + `&location=${enc("Parroquia de San Miguel Arcángel, C. Cobarrubias 102, Centro, 62900 Jojutla, Mor., México")}`
     + `&sf=true&output=xml`;
   const gbtn = document.getElementById("btn-gcal");
   if(gbtn){ gbtn.href = gcalURL; }
