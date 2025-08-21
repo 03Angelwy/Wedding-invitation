@@ -1,16 +1,13 @@
 (function(){
-    // Siempre empezar arriba al cargar/recargar o volver desde el historial
+  // Siempre empezar arriba al cargar/recargar o volver desde el historial
   if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
   }
-
   function goTop() { window.scrollTo(0, 0); }
+  window.addEventListener('load', goTop);
+  window.addEventListener('pageshow', (e) => { if (e.persisted) goTop(); });
+  window.addEventListener('beforeunload', goTop);
 
-  window.addEventListener('load', goTop);           // recarga normal
-  window.addEventListener('pageshow', (e) => {      // vuelta desde bfcache (Safari/Firefox)
-    if (e.persisted) goTop();
-  });
-  window.addEventListener('beforeunload', goTop);   // justo antes de salir/recargar
   // Quita el hash de la URL para que no salte a secciones al refrescar
   if (location.hash) {
     history.replaceState(null, '', location.pathname + location.search);
@@ -18,31 +15,26 @@
 
   const cfg = window.INVITE_CONFIG || {};
 
+  /* ======================= Hero rotativo ======================= */
   const heroEl = document.getElementById("hero");
   const imgs = (cfg.HERO_IMAGES || []).filter(Boolean);
   let idx = 0;
-  // Rotación del hero sin pantallazo negro
-const showHero = (src) => { if (heroEl) heroEl.style.backgroundImage = `url('${src}')`; };
-
-function swapWhenReady(nextSrc) {
-  const im = new Image();
-  im.onload  = () => showHero(nextSrc);  // sólo cambia cuando ya cargó
-  im.onerror = () => {};                 // opcional: ignora errores
-  im.src = nextSrc;
-}
-
-// pinta la primera y luego rota
-if (imgs.length) {
-  showHero(imgs[0]);
-  if (imgs.length > 1) {
-    setInterval(() => {
-      idx = (idx + 1) % imgs.length;
-      swapWhenReady(imgs[idx]);
-    }, 6000);
+  const showHero = (src) => { if (heroEl) heroEl.style.backgroundImage = `url('${src}')`; };
+  function swapWhenReady(nextSrc) {
+    const im = new Image();
+    im.onload  = () => showHero(nextSrc);
+    im.onerror = () => {};
+    im.src = nextSrc;
   }
-}
+  if (imgs.length) {
+    showHero(imgs[0]);
+    if (imgs.length > 1) {
+      setInterval(() => { idx = (idx + 1) % imgs.length; swapWhenReady(imgs[idx]); }, 6000);
+    }
+  }
 
-
+  /* ======================= Fecha + contador ======================= */
+  // Fechas en local time (evita desfases por TZ)
   const start = new Date(cfg.startLocal || "2025-11-22T11:30:00-06:00");
   const end   = new Date(cfg.endLocal   || "2025-11-23T01:00:00-06:00");
   const fmt = new Intl.DateTimeFormat("es-MX",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
@@ -67,6 +59,7 @@ if (imgs.length) {
   }
   setInterval(tick,1000); tick();
 
+  /* ======================= Google Calendar link ======================= */
   const enc = encodeURIComponent;
   const toICSDate = d => d.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}Z$/,"Z");
   const gcalURL = `https://calendar.google.com/calendar/render?action=TEMPLATE`
@@ -78,11 +71,13 @@ if (imgs.length) {
   const gbtn = document.getElementById("btn-gcal");
   if(gbtn){ gbtn.href = gcalURL; }
 
+  /* ======================= Maps ======================= */
   const linkI = document.getElementById("link-iglesia");
   const linkR = document.getElementById("link-recepcion");
   if(linkI && cfg.MAPS && cfg.MAPS.IGLESIA) linkI.href = cfg.MAPS.IGLESIA;
   if(linkR && cfg.MAPS && cfg.MAPS.RECEPCION) linkR.href = cfg.MAPS.RECEPCION;
 
+  /* ======================= Galería ======================= */
   const galleryImg = document.getElementById("gallery-img");
   const gimgs = (cfg.GALLERY_IMAGES || []).filter(Boolean);
   let gi = 0;
@@ -100,12 +95,14 @@ if (imgs.length) {
   if(prev) prev.addEventListener("click", ()=>{ gi = (gi-1+gimgs.length)%gimgs.length; paintGallery(); });
   if(next) next.addEventListener("click", ()=>{ gi = (gi+1)%gimgs.length; paintGallery(); });
 
+  /* ======================= Animación timeline ======================= */
   const items = document.querySelectorAll(".t-item");
   const io = new IntersectionObserver(entries=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("visible"); io.unobserve(e.target);} });
   },{threshold:.15});
   items.forEach(el=>io.observe(el));
 
+  /* ======================= Datos del invitado ======================= */
   const params = new URLSearchParams(location.search);
   const inviteId = params.get("id") || "";
   const guestNameEl = document.getElementById("guest-name");
@@ -123,6 +120,7 @@ if (imgs.length) {
       if(!r.ok) throw new Error("Sheets endpoint error");
       return await r.json();
     }
+    // Local sample para desarrollo
     const r = await fetch(cfg.LOCAL_SAMPLE_JSON || "data/sample-invitados.json", {cache:"no-store"});
     if(!r.ok) throw new Error("No sample JSON");
     const data = await r.json();
@@ -131,7 +129,7 @@ if (imgs.length) {
   }
 
   function fillInvite(row){
-    if(!row) return;
+    if(!row) row = {};
     const nombre = row.nombre || "Invitado";
     const pases  = Number(row.pases || 1);
     const restr  = row.restric || " ";
@@ -154,6 +152,7 @@ if (imgs.length) {
     fillInvite(null);
   });
 
+  /* ======================= QR ======================= */
   const modal = document.getElementById("qr-modal");
   const qrBtn = document.getElementById("btn-qr");
   const qrBox = document.getElementById("qr-canvas");
@@ -161,9 +160,36 @@ if (imgs.length) {
   if(qrBtn && modal){
     qrBtn.addEventListener("click", ()=>{
       const payload = JSON.stringify({id: inviteId || "demo", nombre: guestNameEl?.textContent||""});
-      if(qrBox){ qrBox.innerHTML=""; if(window.QRCode){ window.QRCode.toCanvas(payload,{width:240},(err,canvas)=>{ if(!err) qrBox.appendChild(canvas); }); } }
+      if(qrBox){
+        qrBox.innerHTML="";
+        if(window.QRCode){
+          window.QRCode.toCanvas(payload,{width:240},(err,canvas)=>{ if(!err) qrBox.appendChild(canvas); });
+        }
+      }
       if(qrText) qrText.textContent = payload;
       modal.showModal();
     });
   }
+
+  /* ======================= PADRINOS dinámicos ======================= */
+  function renderPadrinos(){
+    const cont = document.getElementById("padrinos-grid");
+    const list = (cfg.PADRINOS || []).filter(Boolean);
+    if(!cont || !list.length) return;
+
+    const esc = (s) => String(s ?? "")
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+
+    cont.innerHTML = list.map(g => {
+      const items = (g.nombres || []).filter(Boolean).map(n => `<li>${esc(n)}</li>`).join("") || "<li>Por definir</li>";
+      return `
+        <div class="padrino-group">
+          <h3 class="subtitle">${esc(g.titulo || "Padrinos")}</h3>
+          <ul class="names">${items}</ul>
+        </div>
+      `;
+    }).join("");
+  }
+  renderPadrinos();
 })();

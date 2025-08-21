@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <script defer src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
-  <link rel="stylesheet" href="style.css?v=2025-08-20-arras" />
+  <link rel="stylesheet" href="style.css?v=2025-08-20-padrinos" />
   <style> a[data-wallet][href="#"]{ display:none; } </style>
 </head>
 <body>
@@ -19,7 +19,7 @@
     <div class="hero-overlay glass-top">
       <div class="hero-inner">
         <h1 class="brand">Ángel <span>&</span> Suleydy</h1>
-        <p class="hero-sub" id="wedding-date">Sábado, 29 de noviembre de 2025</p>
+        <p class="hero-sub" id="wedding-date">Sábado, 22 de noviembre de 2025</p>
 
         <div class="countdown" id="contador" aria-label="Cuenta regresiva">
           <div class="box"><div id="d-val" class="val">00</div><div class="lbl">Días</div></div>
@@ -94,40 +94,8 @@
           </div>
         </div>
 
-        <!-- Padrinos: ahora 4 tarjetas (misa, lazo, anillos, arras) -->
-        <div class="padrinos-grid">
-          <div class="padrino-group">
-            <h3 class="subtitle">Padrinos de misa</h3>
-            <ul class="names">
-              <li>Leticia Guadalupe Alatriste</li>
-              <li>Pedro Flores</li>
-            </ul>
-          </div>
-
-          <div class="padrino-group">
-            <h3 class="subtitle">Padrinos de lazo</h3>
-            <ul class="names">
-              <li>Nombre</li>
-              <li>Nombre</li>
-            </ul>
-          </div>
-
-          <div class="padrino-group">
-            <h3 class="subtitle">Padrinos de anillos</h3>
-            <ul class="names">
-              <li>Anselma Almanza</li>
-              <li>J Ascencion Alatriste</li>
-            </ul>
-          </div>
-
-          <div class="padrino-group">
-            <h3 class="subtitle">Padrinos de arras</h3>
-            <ul class="names">
-              <li>Nombre</li>
-              <li>Nombre</li>
-            </ul>
-          </div>
-        </div>
+        <!-- Padrinos: se renderizan dinámicamente -->
+        <div class="padrinos-grid" id="padrinos-grid"></div>
       </div>
     </section>
 
@@ -243,13 +211,20 @@
         "img/headers/Imagen_001.webp",
         "img/headers/Imagen_002.webp",
         "img/headers/Imagen_003.webp",
-        "img/headers/Imagen_004.webp",
-        "img/headers/Imagen_005.webp"
+        "img/headers/Imagen_004.webp"
       ],
-      GALLERY_IMAGES: ["img/gallery1.jpg","img/gallery2.jpg","img/gallery3.jpg"]
+      GALLERY_IMAGES: ["img/gallery1.jpg","img/gallery2.jpg","img/gallery3.jpg"],
+
+      /* Padrinos (dinámicos) */
+      PADRINOS: [
+        { key: "misa",    titulo: "Padrinos de misa",    nombres: ["Leticia Guadalupe Alatriste", "Pedro Flores"] },
+        { key: "lazo",    titulo: "Padrinos de lazo",    nombres: ["Alicia Alatriste", "Victor"] },
+        { key: "anillos", titulo: "Padrinos de anillos", nombres: ["Anselma Almanza", "J Ascencion Alatriste"] },
+        { key: "arras",   titulo: "Padrinos de arras",   nombres: ["Aristea Leon", "Amado Alvarado"] }
+      ]
     };
   </script>
-  <script src="script.js?v=2025-08-20-arras"></script>
+  <script src="script.js?v=2025-08-20-padrinos"></script>
 
   <noscript>
     <div style="text-align:center;padding:10px;color:#a00">
