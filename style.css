@@ -48,32 +48,37 @@ img{ max-width: 100%; display: block; }
 
 .site-footer{ text-align: center; padding: 30px 0 60px; color: #666; }
 
-/* ===== HERO ===== */
+/* =========================================================================
+   HERO (foto + medio óvalo SIEMPRE a pantalla completa)
+   ========================================================================= */
 .hero{
   position: relative;
-  min-height: clamp(560px, 82vh, 1100px);
+  min-height: 100vh;                                   /* fullscreen */
   background: #111 url('img/headers/Imagen_001.webp') center/cover no-repeat;
   transition: background-image .8s ease;
+}
+@supports (height: 100svh){
+  .hero{ min-height: 100svh; }                         /* móvil moderno */
 }
 
 /* Capa que ocupa todo el hero y pega el óvalo al fondo */
 .hero-overlay{
   position: absolute; inset: 0;
   display: flex; justify-content: center; align-items: flex-end;
-  padding-bottom: 0; /* sin aire abajo: el óvalo toca el borde */
+  padding-bottom: 0;                                   /* sin aire abajo */
 }
 /* Sombra sutil sobre la foto */
 .glass-top{ background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.25)); }
 
-/* “Medio óvalo” */
+/* “Medio óvalo” centrado y pegado al borde inferior */
 .hero-inner{
   width: min(1100px, 92%);
-  margin-bottom: 0;
-  padding: 32px 20px 20px;            /* respiro interno */
+  margin: 0;
+  padding: 32px 20px 20px;                             /* respiro interno */
   text-align: center;
   background: var(--glass);
   backdrop-filter: blur(6px);
-  border-radius: 1200px 1200px 0 0;   /* medio óvalo */
+  border-radius: 1200px 1200px 0 0;                    /* medio óvalo */
   box-shadow: 0 10px 30px rgba(0,0,0,.10);
 }
 
@@ -104,7 +109,9 @@ img{ max-width: 100%; display: block; }
   margin-top: 4px; opacity: .9;
 }
 
-/* ===== Secciones ===== */
+/* =========================================================================
+   SECCIONES
+   ========================================================================= */
 .section{ padding: 40px 0; }
 
 /* ===== Invitados ===== */
@@ -212,7 +219,9 @@ img{ max-width: 100%; display: block; }
 .reveal-up{ opacity: 0; transform: translateY(12px); transition: all .6s ease; }
 .reveal-up.is-visible{ opacity: 1; transform: none; }
 
-/* ===== Responsivo ===== */
+/* =========================================================================
+   RESPONSIVO
+   ========================================================================= */
 @media (max-width: 920px){
   .places-2{ grid-template-columns: 1fr; }
 }
@@ -223,9 +232,10 @@ img{ max-width: 100%; display: block; }
   .two-col{ grid-template-columns: 1fr; }
   .two-col::after{ display: none; }
 }
-/* Móvil: 1 fila de contador y hero más bajo */
+
+/* Móvil: fullscreen + contador en 1 fila y UI compacta */
 @media (max-width: 560px){
-  .hero{ min-height: 66vh; }
+  .hero{ min-height: 100svh; }
 
   .countdown{
     grid-template-columns: repeat(4, minmax(64px, 1fr));
@@ -235,4 +245,11 @@ img{ max-width: 100%; display: block; }
   .countdown .val{ font-size: clamp(18px, 5.2vw, 22px); line-height: 1.05; }
   .countdown .lbl{ font-size: 11px; letter-spacing: .4px; margin-top: 2px; }
   #btn-gcal{ padding: 10px 14px; font-size: .95rem; }
+}
+
+/* Alturas de pantalla muy bajas (laptops pequeñas) */
+@media (max-height: 680px){
+  .hero-inner{ padding: 24px 16px 16px; }
+  .brand{ font-size: clamp(28px, 5.2vw, 48px); }
+  .hero-sub{ margin: 4px 0 10px; }
 }
